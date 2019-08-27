@@ -21,7 +21,7 @@ margin_bottom = 1024.0
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-scale = Vector2( 0.82001, 0.952386 )
+scale = Vector2( 0.539386, 0.589751 )
 
 [node name="AsteroidTimer" type="Timer" parent="."]
 wait_time = 0.5
