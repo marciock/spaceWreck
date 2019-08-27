@@ -1,0 +1,58 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/scripts/asteroid.gd" type="Script" id=1]
+[ext_resource path="res://sprites/chiquito/chiquito01.png" type="Texture" id=2]
+[ext_resource path="res://sprites/chiquito/chiquito02.png" type="Texture" id=3]
+[ext_resource path="res://sprites/chiquito/chiquito03.png" type="Texture" id=4]
+[ext_resource path="res://sprites/chiquito/chiquito04.png" type="Texture" id=5]
+[ext_resource path="res://sprites/chiquito/chiquito05.png" type="Texture" id=6]
+[ext_resource path="res://sprites/chiquito/chiquito06.png" type="Texture" id=7]
+[ext_resource path="res://sprites/asteroide/asteroide01.png" type="Texture" id=8]
+[ext_resource path="res://sprites/asteroide/asteroide02.png" type="Texture" id=9]
+[ext_resource path="res://sprites/asteroide/asteroide03.png" type="Texture" id=10]
+[ext_resource path="res://sprites/asteroide/asteroide04.png" type="Texture" id=11]
+[ext_resource path="res://sprites/asteroide/asteroide05.png" type="Texture" id=12]
+[ext_resource path="res://sprites/asteroide/asteroide06.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "small",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "big",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="asteroid" type="RigidBody2D"]
+position = Vector2( 325.351, 230.815 )
+scale = Vector2( 0.809266, 0.789591 )
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "big"
+frame = 4
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 3.87658, 3.59321 )
+shape = SubResource( 2 )
+
+[node name="VisibilityNot" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNot" to="." method="_on_VisibilityNot_screen_exited"]
